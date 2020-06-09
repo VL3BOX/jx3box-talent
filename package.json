@@ -1,0 +1,15 @@
+{
+  "name": "@jx3box/jx3box-talent",
+  "version": "1.0.0",
+  "description": "奇穴模拟器",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JX3BOX/jx3box-talent.git"
+  },
+  "dependencies": {
+    "@jx3box/jx3box-common": "^4.4.8",
+    "jquery": "^3.5.1",
+    "lodash": "^4.17.15"
+  }
+}
