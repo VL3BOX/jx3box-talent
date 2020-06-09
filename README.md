@@ -44,4 +44,4 @@ $(document).on("JX3_QIXUE_Change", function(e, ins) {
 ```
 
 ## 其它属性
-![Talent]('./talent.png')
+![Talent](./talent.png)
