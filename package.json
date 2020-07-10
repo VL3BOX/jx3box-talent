@@ -1,15 +1,23 @@
 {
-  "name": "@jx3box/jx3box-talent",
-  "version": "1.0.3",
-  "description": "奇穴模拟器",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/JX3BOX/jx3box-talent.git"
-  },
-  "dependencies": {
-    "@jx3box/jx3box-common": "^4.4.8",
-    "jquery": "^3.5.1",
-    "lodash": "^4.17.15"
-  }
+    "name": "@jx3box/jx3box-talent",
+    "version": "1.0.4",
+    "description": "奇穴模拟器",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/JX3BOX/jx3box-talent.git"
+    },
+    "dependencies": {
+        "@jx3box/jx3box-common": "^5.0.4",
+        "jquery": "^3.5.1",
+        "lodash": "^4.17.15"
+    },
+    "devDependencies": {
+        "csslab": "^4.0.3",
+        "less": "^3.11.1"
+    },
+    "scripts": {
+        "update": "npm --registry https://registry.npmjs.org install @jx3box/jx3box-common@latest",
+        "build": "npx lessc ./talent.less ./talent.css"
+    }
 }

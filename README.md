@@ -4,7 +4,6 @@
 > 现在，只有上帝知道了……  
 > 先酱，给一个无限期的承诺，或许有一天我会重构。  
 
-样式依赖于 [https://github.com/JX3BOX/jx3box-article-ui]
 
 ## 使用空白配置
 ```javascript
