@@ -43,7 +43,7 @@ class JX3_QIXUE {
 
         //初始化字段
         this._qixue_url = __ossRoot + "data/qixue/";
-        this._img_path = __ossRoot + "icon/";
+        this._img_path = __iconPath + "icon/";
         this._total_levels = 12; //奇穴共12重
         this._item_attr_list = [
             "icon", //图标id
