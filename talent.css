@@ -42,7 +42,7 @@
   box-sizing: border-box;
   writing-mode: tb-rl;
   writing-mode: vertical-rl;
-  background: url("https://oss.jx3box.com/img/qixue/label.png") no-repeat 0 0;
+  background: url("https://img.jx3box.com/img/qixue/label.png") no-repeat 0 0;
   width: 23px;
   height: 86px;
   margin-right: 5px;
@@ -77,7 +77,7 @@
   position: absolute;
   left: -2px;
   top: -2px;
-  background: url("https://oss.jx3box.com/img/qixue/bg.png") no-repeat 0 0;
+  background: url("https://img.jx3box.com/img/qixue/bg.png") no-repeat 0 0;
   z-index: 6;
 }
 .w-qixue-box .w-qixue-clist-item img,
@@ -135,12 +135,12 @@
   content: "";
   width: 44px;
   height: 11px;
-  background: url("https://oss.jx3box.com/img/qixue/fold.png") no-repeat 0 0;
+  background: url("https://img.jx3box.com/img/qixue/fold.png") no-repeat 0 0;
   margin: 0 2px;
   display: none;
 }
 .w-qixue-box .w-qixue-clist-item.on:before {
-  background-image: url("https://oss.jx3box.com/img/qixue/unfold.png");
+  background-image: url("https://img.jx3box.com/img/qixue/unfold.png");
 }
 .w-qixue-box .w-qixue-obox,
 .w-qixue-box .w-qixue-olist,
