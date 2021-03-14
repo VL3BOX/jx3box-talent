@@ -1,6 +1,6 @@
 {
     "name": "@jx3box/jx3box-talent",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "奇穴模拟器",
     "main": "index.js",
     "repository": {
@@ -17,7 +17,7 @@
         "less": "^3.11.1"
     },
     "scripts": {
-        "update": "npm --registry https://registry.npmjs.org install @jx3box/jx3box-common@latest",
+        "update": "npm install @jx3box/jx3box-common@latest",
         "build": "npx lessc ./talent.less ./talent.css"
     }
 }

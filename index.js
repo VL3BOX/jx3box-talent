@@ -15,13 +15,13 @@
 
 */
 
-const _ = require("lodash");
+import _ from "lodash";
 import $ from "jquery";
-const {
+import {
     __ossRoot,
     __ossMirror,
     __iconPath,
-} = require("@jx3box/jx3box-common/js/jx3box.json");
+} from "@jx3box/jx3box-common/data/jx3box.json";
 
 class JX3_QIXUE {
     /**
