@@ -58,6 +58,8 @@ class JX3_QIXUE {
         this._data = {}; //格式化数据对象
         this.txt = new Array(this._total_levels); //文字版
 
+        this.isQQBrowser = window.navigator.userAgent.includes('QQBrowser')
+
         // 未传递
         if (!opt) opt = this._default;
 
@@ -209,8 +211,8 @@ class JX3_QIXUE {
 
         //结构化包裹层
         this.container.append(`
-            <div class="w-qixue-box">
-                <h4 class="w-qixue-xf">奇穴</h4>
+            <div class="w-qixue-box ${this.isQQBrowser && 'isQQBrowser'}">
+                <div class="w-qixue-xf">奇穴</div>
                 <ul class="w-qixue-clist"></ul>
                 <div class="w-qixue-obox"></div>
             </div>
