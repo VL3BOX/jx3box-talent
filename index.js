@@ -3,7 +3,7 @@
  * @Author: iRuxu
  * @Date: 2019-09-08 06:26:22
  * @LastEditors: iRuxu
- * @LastEditTime: 2020-06-10 05:02:40
+ * @LastEditTime: 2021-10-07 
  */
 
 /* ex. 
@@ -34,7 +34,7 @@ class JX3_QIXUE {
     constructor(opt) {
         //构建器参数默认值
         this._default = {
-            version: "v20200522",
+            version: "v20210830",
             container: ".qx-container",
             xf: "其它",
             sq: "1,1,1,1,1,1,1,1,1,1,1,1",
@@ -56,12 +56,15 @@ class JX3_QIXUE {
             "extend", //技能长述
         ];
         this._data = {}; //格式化数据对象
-        this.txt = new Array(this._total_levels); //文字版
-
         this.isQQBrowser = window.navigator.userAgent.includes('QQBrowser')
 
         // 未传递
         if (!opt) opt = this._default;
+
+        // 导出内容
+        this.txt = new Array(this._total_levels); //文字版
+        this.code = {version:'',xf:'',sq:''}
+        this.overview = []
 
         return this._init(opt);
     }
@@ -76,7 +79,7 @@ class JX3_QIXUE {
     }
 
     //获取奇穴数据
-    _get_qixue_data(opt) {
+    _getTalentData(opt) {
         return new Promise((resolve, reject) => {
             $.ajax({
                 url: this._qixue_url + opt.version + ".json",
@@ -103,7 +106,7 @@ class JX3_QIXUE {
 
         //step.0 加载不同版本json文件
         if (opt.version != this.version) {
-            this._data = await this._get_qixue_data(opt);
+            this._data = await this._getTalentData(opt);
         }
 
         //step.1 配置参数
@@ -194,6 +197,22 @@ class JX3_QIXUE {
         this.map = this._data[opt.xf];
         this.sq = opt.sq.split(",");
         this.editable = opt.editable;
+        this.code = {version:opt.version,xf:opt.xf,sq:opt.sq}
+        this.overview = this._buildTalentOutputData(this.sq,this.map)
+    }
+
+    //构建奇穴有效吐出数据
+    _buildTalentOutputData(sq,data){
+        let overview = []
+        sq.forEach((item,i) => {
+            let _record = data[i + 1][item]
+            overview.push({
+                id : ~~_record.id,
+                icon : ~~_record.icon,
+                name : _record.name
+            })
+        })
+        return overview
     }
 
     //结构化容器
@@ -292,6 +311,7 @@ class JX3_QIXUE {
             $.each(level, function (j, point) {
                 __instance._olist.eq(i - 1).append(`
                     <li class="w-qixue-olist-item" 
+                        data-id="${point["id"]}" 
                         data-icon="${point["icon"]}" 
                         data-name="${point["name"]}"
                         data-desc="${point["desc"]}"
@@ -431,6 +451,12 @@ class JX3_QIXUE {
             //更新内部数据
             __instance.sq[__order] = $from.attr("data-pos");
             __instance.txt[__order] = $from.attr("data-name");
+            __instance.code.sq = __instance.sq.toString()
+            __instance.overview[__order] = {
+                id : ~~$from.attr("data-id"),
+                icon : ~~$from.attr("data-icon"),
+                name : $from.attr("data-name"),
+            }
 
             //触发自定义事件
             $(document).trigger("JX3_QIXUE_Change", __instance);
