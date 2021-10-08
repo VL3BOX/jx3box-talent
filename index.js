@@ -3,7 +3,7 @@
  * @Author: iRuxu
  * @Date: 2019-09-08 06:26:22
  * @LastEditors: iRuxu
- * @LastEditTime: 2021-10-07 
+ * @LastEditTime: 2020-06-10 05:02:40
  */
 
 /* ex. 
@@ -34,7 +34,7 @@ class JX3_QIXUE {
     constructor(opt) {
         //构建器参数默认值
         this._default = {
-            version: "v20210830",
+            version: "v20200522",
             container: ".qx-container",
             xf: "其它",
             sq: "1,1,1,1,1,1,1,1,1,1,1,1",
@@ -398,18 +398,20 @@ class JX3_QIXUE {
             let extend = $(this).attr("data-extend");
 
             let isNotExist = $(this).children(".w-qixue-item-pop").length == 0;
-
-            if (isNotExist) {
-                let __html = `<span class="w-qixue-item-pop">`;
-                __html += `<b class="u-name">${name}</b>`;
+            let __html = `<b class="u-name">${name}</b>`;
                 __html += `<b class="u-skill">${skill_type}</b>`;
                 if (is_skill && meta != "null" && meta != undefined)
                     __html += `<em class="u-meta">${meta}</em>`;
                 __html += `<span class="u-desc">${desc}</span>`;
                 if (is_skill && extend != "null" && meta != undefined)
                     __html += `<em class="u-extend">${extend}</em>`;
-                __html += `</span>`;
-                $(this).append(__html);
+
+            if (isNotExist) {
+                let wrapper_prefix =`<span class="w-qixue-item-pop">`
+                let wrapper_suffix = `</span>`
+                $(this).append(wrapper_prefix + __html + wrapper_suffix);
+            }else{
+                $(this).children(".w-qixue-item-pop").html(__html)
             }
         });
         //控制显示隐藏显示
