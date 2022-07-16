@@ -10,14 +10,24 @@
     "dependencies": {
         "@jx3box/jx3box-common": "^5.0.4",
         "jquery": "^3.5.1",
-        "lodash": "^4.17.15"
+        "lodash": "^4.17.15",
+        "@jx3box/jx3box-data": "^1.10.3"
     },
     "devDependencies": {
         "csslab": "^4.0.3",
-        "less": "^3.11.1"
+        "less": "^3.11.1",
+        "axios": "^0.19.0",
+        "csv": "^5.3.2",
+        "csv-generate": "^3.2.4",
+        "csv-parse": "^4.8.2",
+        "csv-writer": "^1.5.0",
+        "glob": "^7.1.6",
+        "iconv-lite": "^0.5.0",
+        "fs-extra": "^10.0.0"
     },
     "scripts": {
         "update": "npm install @jx3box/jx3box-common@latest",
-        "build": "npx lessc ./talent.less ./talent.css"
+        "lib": "npx lessc ./talent.less ./talent.css",
+        "build": "node ./tools/prepare.js && node ./tools/build.js"
     }
 }
