@@ -1,3 +1,7 @@
 .github
 node_modules
 talent.png
+dist
+output
+raw
+tools
