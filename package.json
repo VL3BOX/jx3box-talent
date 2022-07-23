@@ -9,21 +9,26 @@
     },
     "dependencies": {
         "@jx3box/jx3box-common": "^5.0.4",
+        "@jx3box/jx3box-data": "^1.10.3",
+        "ansi-escapes": "^5.0.0",
+        "cli-color": "^2.0.3",
         "jquery": "^3.5.1",
         "lodash": "^4.17.15",
-        "@jx3box/jx3box-data": "^1.10.3"
+        "moment": "^2.29.4",
+        "papaparse": "^5.3.2",
+        "progress": "^2.0.3"
     },
     "devDependencies": {
-        "csslab": "^4.0.3",
-        "less": "^3.11.1",
         "axios": "^0.19.0",
+        "csslab": "^4.0.3",
         "csv": "^5.3.2",
         "csv-generate": "^3.2.4",
         "csv-parse": "^4.8.2",
         "csv-writer": "^1.5.0",
+        "fs-extra": "^10.0.0",
         "glob": "^7.1.6",
-        "iconv-lite": "^0.5.0",
-        "fs-extra": "^10.0.0"
+        "iconv-lite": "^0.5.2",
+        "less": "^3.11.1"
     },
     "scripts": {
         "update": "npm install @jx3box/jx3box-common@latest",
