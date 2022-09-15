@@ -8,8 +8,8 @@
         "url": "git+https://github.com/JX3BOX/jx3box-talent.git"
     },
     "dependencies": {
-        "@jx3box/jx3box-common": "^5.0.4",
-        "@jx3box/jx3box-data": "^1.10.3",
+        "@jx3box/jx3box-common": "^7.4.2",
+        "@jx3box/jx3box-data": "^1.11.3",
         "ansi-escapes": "^5.0.0",
         "cli-color": "^2.0.3",
         "jquery": "^3.5.1",
@@ -31,7 +31,7 @@
         "less": "^3.11.1"
     },
     "scripts": {
-        "update": "npm install @jx3box/jx3box-common@latest",
+        "update": "npm install @jx3box/jx3box-common@latest @jx3box/jx3box-data@latest",
         "build": "npx lessc ./talent.less ./talent.css",
         "talent": "node ./tools/prepare.js && node ./tools/build.js"
     }

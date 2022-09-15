@@ -16,6 +16,7 @@ const dateFormat = require('./includes/dateFormat');
     Logger.info("========== 开始构建奇穴数据 ==========");
     Logger.info('读取必要的raw数据......');
     const datas = {
+        //↓新赛季更新 写死的
         school_map: {
             //取ForceID
             0: "江湖",
@@ -36,6 +37,7 @@ const dateFormat = require('./includes/dateFormat');
             25: "凌雪",
             211: "衍天",
             212: "药宗",
+            213: "刀宗",
         },
         kungfu_map: {
             //取KungfuID
@@ -68,6 +70,7 @@ const dateFormat = require('./includes/dateFormat');
             27: "太玄经",
             28: "灵素",
             29: "无方",
+            30: "孤锋诀",
         },
         xf: require('@jx3box/jx3box-data/data/xf/xf.json'),
         skill: [],

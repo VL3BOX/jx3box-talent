@@ -28,6 +28,7 @@ const schoolMap = {
     25: "凌雪",
     211: "衍天",
     212: "药宗",
+    213: "刀宗",
 };
 
 const kungfuMap = {
@@ -61,6 +62,7 @@ const kungfuMap = {
     27: "太玄经",
     28: "灵素",
     29: "无方",
+    30: "孤锋诀",
 };
 
 function readCsvFile(file, isObj) {
