@@ -47,31 +47,38 @@ function filterBySub(desc, datas) {
 
             let result = get_resource('skill', id, datas)
             let skill = {}
-            _.each(result, function (obj, i) {
-                if (obj.Level == level) {
-                    skill = obj
-                    return
+            for (let s of result) {
+                if (s.Level == level) {
+                    skill = s
+                    break
                 }
-            })
-
+            }
+            if (!skill) skill = result[0]
             if (skill.Desc) {
                 desc = desc.replace(arr[i], skill.Desc)
             }
-
         }
     }
     return desc
 }
 function filterByBuffDesc(desc, datas) {
-    let reg = new RegExp(/\<BUFF (\d+?) \d?\ desc>/)
+    let reg = new RegExp(/\<BUFF (\d+?) (\d+?) desc>/)
     let hasMatched = reg.test(desc)
     if (hasMatched) {
         let capture = reg.exec(desc)
         let id = capture[1]
-        //let level = capture[2]
+        let level = capture[2]
 
         let result = get_resource('buff', id, datas)
-        let buff = result.find(item => item.Desc);
+        let buff = {};
+        // 看看有没有等级符合的，没有就就随便取一个有Desc的
+        for (let b of result) {
+            if (b.Level == level) {
+                buff = b
+                break
+            }
+        }
+        if (!buff) buff = result.find(item => item.Desc)
 
         if (buff) {
             desc = desc.replace(reg, buff.Desc)
