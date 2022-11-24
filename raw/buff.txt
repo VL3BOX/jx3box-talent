@@ -285,6 +285,7 @@ BuffID	Level	IconID	Sparking	ShowTime	Show	Remark	Name	Desc	IsAddPeriod
 244	89	18186	0	0	1	(244)(89)骑乘	奔腾不休盆盆船	大河小溪行流流，木盆为船作陆路	1
 244	90	18124	0	0	1	(244)(90)骑乘_哼哼将军	哼哼将军	哼哼哼哼~	0
 244	91	18142	0	0	1	(244)(91)骑乘_此道枯荣·繁生	此道枯荣·繁生	羚麋角解新日行，霜天俯仰聚万灵	1
+244	92	16564	0	0	1	(244)(92)骑乘_烟波流光	烟波流光	碧玉烟波海，疏星淡月天	1
 245	1	360	1	1	1	(245)(1)洗尘宴	进食	根骨提高<BUFF atSpiritBase>点，元气提高<BUFF atSpunkBase>点，内力最大值提高<BUFF atMaxManaAdditional>点，每秒恢复的内力值提高<BUFF atManaReplenishExt>点	1
 246	1	360	1	1	1	(246)(1)寒水宴	进食	根骨提高<BUFF atSpiritBase>点，元气提高<BUFF atSpunkBase>点，内力最大值提高<BUFF atMaxManaAdditional>点，每秒恢复的内力值提高<BUFF atManaReplenishExt>点	1
 247	1	360	1	1	1	(247)(1)接风宴	进食	力道提高<BUFF atStrengthBase>点，身法提高<BUFF atAgilityBase>点，气血最大值提高<BUFF atMaxLifeAdditional>点，每秒恢复的气血值提高<BUFF atLifeReplenishExt>点	1
@@ -20045,6 +20046,8 @@ BuffID	Level	IconID	Sparking	ShowTime	Show	Remark	Name	Desc	IsAddPeriod
 24974	1	2038	0	0	1	(24974)(1)武士免疫内功buff	武士之魂	免疫受到的内功伤害	1
 24975	1	2037	0	0	1	(24975)(1)武士免疫外功buff	武士之魂	免疫受到的外功伤害	1
 24979	1	2148	1	1	1	(24979)(1)武士死亡倒计时	武士之路	结束时，牺牲自己造成大量伤害	1
+24983	1	16563	1	1	1	(24983)(1)挂件_设定集灯笼	寂花烬	提起灯笼	1
 24984	1	2120	0	0	1	(24984)(1)6号_李重茂_恨阶段通用惩罚	魔障入体	被李重茂的魔障影响越来越深，持续受到外功伤害	1
 24999	1	3444	0	0	1	(24999)(1)武士AOE减伤	一刀流身法	减少60%受到的AOE伤害	1
 25051	1	13386	1	1	1	(25051)(1)气纯cwdot	常清	每3秒受到<BUFF atCallNeutralDamage>点混元性伤害	1
+25096	1	978	0	1	1	(25096)(1)唐门周末门派事件_小怪不死	战意	狼牙军战意勃发，在此期间不会死亡	1
