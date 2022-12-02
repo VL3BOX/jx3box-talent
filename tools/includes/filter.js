@@ -14,6 +14,8 @@ function Filter(desc, datas) {
     desc = filterByBuffAt(desc)
     //处理额外附加攻击   -- 基于skill@22635改进,2019/11/8
     desc = filterByAdd(desc)
+    //处理破招 -- 基于120版本破招改动奇穴部分
+    desc = filterBySurplus(desc)
     //过滤其它<>
     desc = desc.replace(/\<.*?\>/g, '')
     //处理undefined
@@ -106,6 +108,23 @@ function filterByBuffTime(desc, datas) {
             if (!buff.Interval) buff = result[1]
             let time = parseInt(buff.Interval) / 16 * parseInt(buff.Count) + '秒'
             desc = desc.replace(reg, time)
+        })
+    }
+    return desc
+}
+function filterBySurplus(desc, datas) {
+    let reg = new RegExp(/\<SUR (.+?)\>/)
+    let subreg = new RegExp(/\<SUR (.+?)\>/g)
+    let hasMatched = reg.test(desc)
+    if (hasMatched) {
+        const _capture = desc.match(subreg)
+        _capture.forEach(cap => {
+            let k = reg.exec(cap)
+            let surDate = '（' + parseFloat(k[1]) + '*破招系数*破招值）'
+            desc = desc.replace(reg, surDate)
+            //"xx".replace(/\<SUR (.+)\>/, "$1×破招系数×破招值")
+            console.log(desc)
+
         })
     }
     return desc
