@@ -387,7 +387,7 @@
   bottom: 100%;
   margin-bottom: 10px;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1133px) {
   .w-qixue-box {
     *zoom: 1;
     display: block;
@@ -447,7 +447,7 @@
 .w-qixue-editable .w-qixue-clist-item .w-qixue-item-pop {
   display: none !important;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1133px) {
   .w-qixue-editable {
     display: block;
     width: auto;

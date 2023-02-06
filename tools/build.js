@@ -235,6 +235,7 @@ const dateFormat = require('./includes/dateFormat');
     }
     Logger.info('构建结束,开始输出...');
     fs.writeFileSync('./dist/talents.json', JSON.stringify(datas.talents));
+    fs.writeFileSync('./output/talents.json', JSON.stringify(datas.talents));
     fs.writeFileSync(`./output/v${dateFormat(new Date())}.json`, JSON.stringify(datas.result));
     writeCsvFile('./dist/temp.csv', datas.temp.map(t => {
         for (let key in t) {
