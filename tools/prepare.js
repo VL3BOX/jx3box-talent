@@ -3,67 +3,17 @@ const fs = require("fs-extra");
 const iconv = require("iconv-lite");
 const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 
-const xf = require('@jx3box/jx3box-data/data/xf/xf.json')
+const force_ids = require("@jx3box/jx3box-data/data/xf/forceid.json");
+const xf = require("@jx3box/jx3box-data/data/xf/xf.json");
 
 const src = "./raw";
 const dist = "./dist";
 
-const schoolMap = {
-    //取ForceID
-    0: "江湖",
-    1: "少林",
-    2: "万花",
-    3: "天策",
-    4: "纯阳",
-    5: "七秀",
-    6: "五毒",
-    7: "唐门",
-    8: "藏剑",
-    9: "丐帮",
-    10: "明教",
-    21: "苍云",
-    22: "长歌",
-    23: "霸刀",
-    24: "蓬莱",
-    25: "凌雪",
-    211: "衍天",
-    212: "药宗",
-    213: "刀宗",
-};
-
-const kungfuMap = {
-    //取KungfuID
-    1: "洗髓经",
-    2: "易筋经",
-    3: "紫霞功",
-    4: "太虚剑意",
-    5: "花间游",
-    6: "傲血战意",
-    7: "离经易道",
-    8: "铁牢律",
-    9: "云裳心经",
-    10: "冰心诀",
-    11: "问水诀",
-    12: "山居剑意",
-    13: "毒经",
-    14: "补天诀",
-    15: "惊羽诀",
-    16: "天罗诡道",
-    17: "焚影圣诀",
-    18: "明尊琉璃体",
-    19: "笑尘诀",
-    20: "铁骨衣",
-    21: "分山劲",
-    22: "莫问",
-    23: "相知",
-    24: "北傲诀",
-    25: "凌海诀",
-    26: "隐龙诀",
-    27: "太玄经",
-    28: "灵素",
-    29: "无方",
-    30: "孤锋诀",
-};
+const schoolMap = force_ids;
+const kungfuMap = Object.values(xf).reduce((acc, cur) => {
+    acc[cur.kungfuId] = cur.name;
+    return acc;
+}, {});
 
 function readCsvFile(file, isObj) {
     console.time(`reading ${file}`);
@@ -104,16 +54,16 @@ async function init() {
     const skills = await readCsvFile(`${src}/skill.txt`, true);
     const points = await readCsvFile(`${src}/TenExtraPoint.tab`);
     const result = [];
-    const talents = {}
+    const talents = {};
     for (const point of points) {
         const school = schoolMap[point.ForceID];
         const kungfu = kungfuMap[point.KungFuID];
-        const mountID = xf[kungfu]['id']
+        const mountID = xf[kungfu]["id"];
 
         let _talents = [];
 
         [1, 2, 3, 4, 5]
-            .map((v) => [`SkillID${v}`, `SkillLevel${v}`])
+            .map(v => [`SkillID${v}`, `SkillLevel${v}`])
             .forEach(([id, level]) => {
                 let skillId = `${point[id]}-${point[level]}`;
                 let _skillId = `${point[id]}-0`; //取level为0
@@ -132,16 +82,15 @@ async function init() {
                     });
 
                     if (!talents[mountID]) {
-                        talents[mountID] = []
+                        talents[mountID] = [];
                     }
-                    _talents.push(point[id])
-
+                    _talents.push(point[id]);
                 }
             });
-        talents[mountID].push(_talents)
+        talents[mountID].push(_talents);
     }
     // 生成 bps 奇穴
-    fs.outputFileSync(`./dist/talents.json`, JSON.stringify(talents), 'utf-8')
+    fs.outputFileSync(`./dist/talents.json`, JSON.stringify(talents), "utf-8");
 
     const csvWriter = createCsvWriter({
         path: `${dist}/temp.csv`,
