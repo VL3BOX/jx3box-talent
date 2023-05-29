@@ -20,6 +20,7 @@ const force_ids = require("@jx3box/jx3box-data/data/xf/forceid.json");
 const xf = require("@jx3box/jx3box-data/data/xf/xf.json");
 
 const kungfu_map = Object.values(xf).reduce((acc, cur) => {
+    if(cur.name === "山居剑意") cur.name = "问水诀" 
     acc[cur.kungfuId] = cur.name;
     return acc;
 }, {});
