@@ -11,7 +11,7 @@ const dist = "./dist";
 
 const schoolMap = force_ids;
 const kungfuMap = Object.values(xf).reduce((acc, cur) => {
-    if(cur.name === "山居剑意") cur.name = "问水诀" 
+    if (cur.name === "山居剑意") cur.name = "问水诀";
     acc[cur.kungfuId] = cur.name;
     return acc;
 }, {});

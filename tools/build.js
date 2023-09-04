@@ -20,7 +20,7 @@ const force_ids = require("@jx3box/jx3box-data/data/xf/forceid.json");
 const xf = require("@jx3box/jx3box-data/data/xf/xf.json");
 
 const kungfu_map = Object.values(xf).reduce((acc, cur) => {
-    if(cur.name === "山居剑意") cur.name = "问水诀" 
+    if (cur.name === "山居剑意") cur.name = "问水诀";
     acc[cur.kungfuId] = cur.name;
     return acc;
 }, {});
@@ -134,7 +134,7 @@ const kungfu_map = Object.values(xf).reduce((acc, cur) => {
             bar.tick();
         }
         bar.terminate();
-        Logger.info("构建镇派数据......");
+        Logger.info("构建奇穴数据......");
     }
     Logger.info("生成中间表......");
     {
