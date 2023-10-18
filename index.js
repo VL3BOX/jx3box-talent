@@ -17,12 +17,11 @@
 
 import _ from "lodash";
 import $ from "jquery";
-import {
-    __ossRoot,
-    __ossMirror,
+import JX3BOX from "@jx3box/jx3box-common/data/jx3box.json";
+const {
     __iconPath,
     __dataPath,
-} from "@jx3box/jx3box-common/data/jx3box.json";
+} = JX3BOX;
 
 class JX3_QIXUE {
     /**
