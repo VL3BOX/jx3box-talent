@@ -1,47 +1,31 @@
-name: Node.js Package
-
-on: [push]
-
-# on:
-#   release:
-#     types: [created]
-
+name: Publish NPM package to GitHub registry
+on:
+  push:
+    branches:
+      - i18n
 jobs:
-  # build:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: actions/setup-node@v1
-  #       with:
-  #         node-version: 12
-  #     - run: npm ci
-  #     - run: npm test
-
-  publish-npm:
-    # needs: build
+  build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      - name: lowercase github.repository
+        run: |
+          echo "GITHUB_REPO=`echo ${{github.repository}} | tr '[:upper:]' '[:lower:]'`" >>${GITHUB_ENV}
+      - name: Get Gitlab project id
+        id: gitlab_project_id
+        run: |
+          GL_PROJECT_ID=$(curl -s -H "PRIVATE-TOKEN: ${{ secrets.GL_NPM_TOKEN }}" \
+            "https://gitlab.com/api/v4/projects?owned=true&search=${{ github.repository }}&search_namespaces=true" | \
+            jq -c '.[] | select(.path_with_namespace == "${{ env.GITHUB_REPO }}").id')
+          echo "GL_PROJECT_ID=$GL_PROJECT_ID" >>${GITHUB_ENV}
+      - uses: actions/setup-node@v3
         with:
-          node-version: 12
-          registry-url: https://registry.npmjs.org/
-      # - run: npm ci
-      - run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-
-  publish-gpr:
-    # needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-          registry-url: https://npm.pkg.github.com/
-          scope: '@jx3box'
-      # - run: npm ci
+          node-version: "16.x"
+          registry-url: "https://gitlab.com/api/v4/projects/${{ env.GL_PROJECT_ID }}/packages/npm/"
+          scope: "@jx3box"
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{ secrets.GL_NPM_TOKEN }}
