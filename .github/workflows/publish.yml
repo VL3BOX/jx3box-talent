@@ -17,7 +17,6 @@ jobs:
           echo "GITHUB_REPO=`echo ${{github.repository}} | tr '[:upper:]' '[:lower:]'`" >>${GITHUB_ENV}
 
       - name: Get Gitlab project id
-        id: gitlab_project_id
         run: |
           GL_PROJECT_ID=$(curl -s -H "PRIVATE-TOKEN: ${{ secrets.GL_NPM_TOKEN }}" \
             "https://gitlab.com/api/v4/projects?owned=true&search=${{ github.repository }}&search_namespaces=true" | \
@@ -30,7 +29,8 @@ jobs:
       - name: Delete package if existed
         run: |
           PACKAGE_ID=$(curl -s --header "PRIVATE-TOKEN: ${{ secrets.GL_NPM_TOKEN }}" \
-            "https://gitlab.com/api/v4/projects/${{ env.GL_PROJECT_ID }}/packages?package_type=npm"|jq '.[] | select(.version == ${{ env.PACKAGE_VERSION }}).id')
+            "https://gitlab.com/api/v4/projects/${{ env.GL_PROJECT_ID }}/packages?package_type=npm" | \
+            jq '.[] | select(.version == ${{ env.PACKAGE_VERSION }}).id')
 
           if [[ -n $PACKAGE_ID ]]; then 
             curl --request DELETE --header "PRIVATE-TOKEN: ${{ secrets.GL_NPM_TOKEN }}" \
