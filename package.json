@@ -1,39 +1,39 @@
 {
-    "name": "@jx3box/jx3box-talent",
-    "version": "1.2.7",
-    "description": "奇穴模拟器",
-    "main": "index.js",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/JX3BOX/jx3box-talent.git"
-    },
-    "dependencies": {
-        "@jx3box/jx3box-build-common": "^0.1.9",
-        "@jx3box/jx3box-common": "^7.9.15",
-        "@jx3box/jx3box-data": "^3.4.5",
-        "ansi-escapes": "^5.0.0",
-        "cli-color": "^2.0.3",
-        "jquery": "^3.5.1",
-        "lodash": "^4.17.15",
-        "moment": "^2.29.4",
-        "papaparse": "^5.3.2",
-        "progress": "^2.0.3"
-    },
-    "devDependencies": {
-        "axios": "^0.21.2",
-        "csslab": "^4.0.3",
-        "csv": "^5.3.2",
-        "csv-generate": "^3.2.4",
-        "csv-parse": "^4.8.2",
-        "csv-writer": "^1.5.0",
-        "fs-extra": "^10.0.0",
-        "glob": "^7.1.6",
-        "iconv-lite": "^0.5.2",
-        "less": "^3.11.1"
-    },
-    "scripts": {
-        "update": "npm install @jx3box/jx3box-common@latest @jx3box/jx3box-data@latest",
-        "build": "npx lessc ./talent.less ./talent.css",
-        "talent": "node ./tools/prepare.js && node ./tools/build.js"
-    }
+  "name": "@jx3box/jx3box-talent",
+  "version": "1.2.7",
+  "description": "奇穴模拟器",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JX3BOX/jx3box-talent.git"
+  },
+  "dependencies": {
+    "@jx3box/jx3box-build-common": "^0.1.10",
+    "@jx3box/jx3box-common": "^8.2.4",
+    "@jx3box/jx3box-data": "^3.5.6",
+    "ansi-escapes": "^5.0.0",
+    "cli-color": "^2.0.3",
+    "jquery": "^3.5.1",
+    "lodash": "^4.17.15",
+    "moment": "^2.29.4",
+    "papaparse": "^5.3.2",
+    "progress": "^2.0.3"
+  },
+  "devDependencies": {
+    "axios": "^0.21.2",
+    "csslab": "^4.0.3",
+    "csv": "^5.3.2",
+    "csv-generate": "^3.2.4",
+    "csv-parse": "^4.8.2",
+    "csv-writer": "^1.5.0",
+    "fs-extra": "^10.0.0",
+    "glob": "^7.1.6",
+    "iconv-lite": "^0.5.2",
+    "less": "^3.11.1"
+  },
+  "scripts": {
+    "update": "npm install @jx3box/jx3box-common@latest @jx3box/jx3box-data@latest",
+    "build": "npx lessc ./talent.less ./talent.css",
+    "talent": "node ./tools/prepare.js && node ./tools/build.js"
+  }
 }
