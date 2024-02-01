@@ -4,7 +4,7 @@ on:
     branches:
       - i18n
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     permissions:
       contents: read
