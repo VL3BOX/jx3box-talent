@@ -39,6 +39,9 @@ class JX3_QIXUE {
             xf: "其它",
             sq: "1,1,1,1,1,1,1,1,1,1,1,1",
             editable: false,
+            $i18n: {
+                t: (key) => key
+            }
         };
 
         //初始化字段
@@ -65,7 +68,7 @@ class JX3_QIXUE {
         this.txt = new Array(this._total_levels); //文字版
         this.code = {version:'',xf:'',sq:''}
         this.overview = []
-
+        this.$i18n = opt.$i18n || this._default.$i18n
         return this._init(opt);
     }
 
@@ -231,7 +234,7 @@ class JX3_QIXUE {
         //结构化包裹层
         this.container.append(`
             <div class="w-qixue-box ${this.isQQBrowser && 'isQQBrowser'}">
-                <div class="w-qixue-xf">奇穴</div>
+                <div class="w-qixue-xf">${this.$i18n.t('奇穴')}</div>
                 <ul class="w-qixue-clist"></ul>
                 <div class="w-qixue-obox"></div>
             </div>
@@ -389,11 +392,12 @@ class JX3_QIXUE {
     //加载奇穴信息
     _loadMetaEvent(list) {
         //加载描述
+        let __instance = this;
         $(list).on("mouseenter", "li", function () {
             let name = $(this).attr("data-name");
             let meta = $(this).attr("data-meta");
             let is_skill = Boolean(parseInt($(this).attr("data-is_skill")));
-            let skill_type = is_skill ? "主动招式" : "被动招式";
+            let skill_type = is_skill ?  __instance.$i18n.t("主动招式") : __instance.$i18n.t("被动招式");
             let desc = $(this).attr("data-desc");
             let extend = $(this).attr("data-extend");
 
