@@ -83,6 +83,7 @@ const readTabFile = file_path =>
                     }
                     resolve(result);
                 },
+                quoteChar: "￥",
                 delimiter: "\t",
             }
         );
