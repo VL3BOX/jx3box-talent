@@ -29,10 +29,9 @@ const kungfu_map = Object.values(xf).reduce((acc, cur) => {
     Logger.info("========== 开始构建奇穴数据 ==========");
     Logger.info("读取必要的raw数据......");
     const datas = {
-        //↓新赛季更新 写死的
         school_map: force_ids,
-        kungfu_map: kungfu_map,
-        xf: xf,
+        kungfu_map,
+        xf,
 
         skill: [],
         skill_txt: (
@@ -163,7 +162,6 @@ const kungfu_map = Object.values(xf).reduce((acc, cur) => {
                         skillID: keys[0],
                         position: _position++,
                     });
-
                     if (!datas.talents[mountID]) {
                         datas.talents[mountID] = [];
                     }
